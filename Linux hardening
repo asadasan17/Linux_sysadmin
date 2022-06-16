@@ -1,0 +1,84 @@
+In computing, hardening is usually the process of securing a system by reducing its surface of vulnerability, which is larger when a system performs more functions. In principle, a single-function system is more secure than a multipurpose one. The main goal of systems hardening is to reduce security risk by eliminating potential attack vectors and condensing the system’s attack surface.
+
+Partitioning
+  Separate partitions
+        Ensure /boot located on separate partition #low
+        Ensure /home located on separate partition #low
+        Ensure /usr located on separate partition #low
+        Ensure /var located on separate partition #medium
+        Ensure /var/log and /var/log/audit located on separate partitions #high
+        Ensure /tmp and /var/tmp located on separate partitions #high
+  Restrict mount options
+        Restrict /usr partition mount options #low
+        Restrict /var partition mount options #low
+        Restrict /var/log and/var/log/audit partitions mount options #low
+        Restrict /proc partition mount options #low
+        Restrict /boot partition mount options #medium
+        Restrict /boot partition mount options #medium
+        Restrict /varand/var/tmp partitions mount options #medium
+        Restrict /dev/shm partition mount options #medium
+  Polyinstantiated directories
+        Setting up polyinstantiated/var and /var/tmp directories #medium
+  Shared memory
+        Set group for/dev/shm #low
+        Encrypt swap partition #low
+ 
+ 
+Physical Access
+  Password for Single User Mode
+        Protect Single User Mode with root password #low
+
+
+Bootloader
+  Protect bootloader config files
+        Ensure bootloader config files are set properly permissions #low
+    
+    
+Linux Kernel
+  Kernel logs
+        Restricting access to kernel logs #low
+  Kernel pointers
+        Restricting access to kernel pointers #low
+  ExecShield
+        ExecShield protection #low
+  Memory protections
+        Randomise memory space #low
+
+
+Logging
+  Syslog
+        Ensure syslog service is enabled and running #medium
+        Send syslog data to external server #medium
+        
+        
+Users and Groups
+  Passwords
+        Update password policy (PAM) #medium
+        Limit password reuse (PAM) #medium
+        Secure /etc/login.defs password policy #medium
+  Logon Access
+        Set auto logout inactive users #low
+        Set last logon/access notification #low
+        Lock out accounts after a number of incorrect login (PAM) #medium
+        
+        
+Filesystem
+  Hardlinks & Symlinks
+        Enable hard/soft link protection. #low
+  Dynamic Mounting and Unmounting
+        Disable uncommon filesystems #medium
+        
+SELinux & Auditd
+   SELinux Enforcing
+        Set SELinux Enforcing mode #high
+        
+Network
+    TCP/SYN
+        Enable TCP SYN Cookie protection #medium
+    Routing
+        Disable IP source routing #medium
+    ICMP Protocol
+        Disable ICMP redirect acceptance #medium
+        Enable ignoring to ICMP requests #medium
+    Broadcast
+        Enable ignoring broadcasts request #medium
